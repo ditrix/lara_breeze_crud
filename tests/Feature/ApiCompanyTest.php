@@ -8,10 +8,8 @@ use Tests\TestCase;
 
 class ApiCompanyTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     */
-    public function get_companies(): void
+
+    public function test_get_companies(): void
     {
         $response = $this->get('api/companies');
 
