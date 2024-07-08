@@ -33,7 +33,7 @@ class CompanyController extends Controller
      */
     public function show(Company $company)
     {
-        //
+        return new CompanyResource($company);
     }
 
     /**
@@ -41,14 +41,18 @@ class CompanyController extends Controller
      */
     public function update(CompanyRequest $request, Company $company)
     {
-        //
+        $company->update($request->validated());
+
+        return new CompanyResource($company);
     }
+
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Company $company)
     {
-        //
+        $company->delete();
+        return;
     }
 }
