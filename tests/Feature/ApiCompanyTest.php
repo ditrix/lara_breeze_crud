@@ -14,6 +14,17 @@ class ApiCompanyTest extends TestCase
         $response = $this->get('api/companies');
 
         $response->assertStatus(200);
+        // ->assertJsonStructure([
+        //     '*' => [
+        //         'id',
+        //         'name',
+        //         'email',
+        //         'address',
+        //         'website',
+        //         'created_at',
+        //         'updated_at',
+        //     ]
+        // ]);
     }
 
 }
