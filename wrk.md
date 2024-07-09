@@ -18,3 +18,14 @@ npm install --save-dev @vitejs/plugin-vue
 
 https://laravel.com/docs/11.x/vite#vue
 
+changes structure
+
+js
+    components
+        compaines
+            CompaniesIndex.vue
+    composables
+        companies.js   // mb is modern Composition API for vue
+    router
+        index.js
+    app.js        
