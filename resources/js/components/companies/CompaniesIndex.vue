@@ -1,4 +1,11 @@
 <template>
+
+    <div class="flex mb-4 place-content-end">
+        <div class="inline-flex items-center px-4 py-2 text-xs font-semibold tracking-widest text-white bg-gray-800 hover:bg-gray-700">
+            <router-link :to="{ name: 'companies.create' }" class="text-sm font-medium">Create company</router-link>
+        </div>
+    </div>
+
     <div class="min-w-full overflow-hidden overflow-x-auto align-middle sm:rounded-md">
         <table class="min-w-full border divide-y divide-gray-200">
             <thead>
@@ -71,19 +78,20 @@ import { onMounted } from 'vue';
 
     const { companies, getCompanies, destroyCompany } = useCompanies()
 
-const deleteCompany = async (id) => {
-
-    if(!window.confirm('are you sure ?')) {
-        return
-    }
-
-    await destroyCompany(id)
-
-    await getCompanies()
-}
-
 // We get the companies immediately
 
     onMounted(getCompanies)
+
+    const deleteCompany = async (id) => {
+
+        if(!window.confirm('are you sure ?')) {
+            return
+        }
+
+        await destroyCompany(id)
+
+        await getCompanies()
+    }
+
 
 </script>
