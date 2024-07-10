@@ -1,110 +1,34 @@
+# installation
 
-### Sail howto
-
-
-## Установка laravel
-
-# Установка Composer (если не установлен)
-
-curl -sS https://getcomposer.org/installer | php
-
-sudo mv composer.phar /usr/local/bin/composer
-
-
-# Создание нового проекта Laravel
-
-composer create-project laravel/laravel my-laravel-project
-
-cd my-laravel-project
-
-
-# Установка Laravel Sail
+composer create-project laravel/laravel:^10.0 my-laravel-project
 
 cp .env.example .env
+
 nano .env  
 
 composer require laravel/sail --dev
 
 php artisan sail:install
 
-
-# Проверка наличия файла docker-compose.yml
-
-ls -la
-
-# Если файла нет, повторно установите Sail
-
-composer require laravel/sail --dev
-
-php artisan sail:install
-
-
-
-# Запуск контейнеров Docker
-
 ./vendor/bin/sail up -dev
-
-
-# Generate a new application key:
 
 ./vendor/bin/sail artisan key:generate
 
-
-# Create a symbolic link to the storage directory:
-
 ./vendor/bin/sail artisan storage:link
-
-# запуск миграций
 
 ./vendor/bin/sail artisan migrate
 
+--------------------------------------------------
 
-
-## Другие команды
-
-# Убедитесь, что контейнеры запущены
-
-./vendor/bin/sail up -d
-
-# Подключитесь к контейнеру Laravel shell
-
-./vendor/bin/sail shell
-
-# Используйте MySQL клиент для подключения к MySQL серверу
-
-mysql -hsail-mysql -usail -ppassword
-
-# Или подключитесь к контейнеру MySQL напрямую
-
-docker ps
-
-docker exec -it <mysql_container_name> bash
-
-mysql -uroot -p
-
-
-
-## Подключение к контейнеру Laravel shell
-
-./vendor/bin/sail shell
-
-
-# Найдите имя контейнера Laravel
-
-docker ps
-
-# Подключитесь к контейнеру Laravel с помощью Docker
-
-docker exec -it <laravel_container_name> bash
-
-
-# specific commands for currenct proj only
+# ui (breeze)
 
  composer require laravel/breeze --dev
 
  artisan breeze:install blade
 
----
+------------------------------------------------
+
+# backend
 
  artisan make:model Company -m
 
@@ -115,3 +39,51 @@ docker exec -it <laravel_container_name> bash
  artisan make:resource CompanyResource
 
  artisan make:request CompanyRequest
+
+
+# test
+
+php artisan make:test MyTests
+
+ex.
+
+class MyTest extends TestCase
+{
+   use RefreshDatabase;
+
+    public function test_get_companies(): void
+    {
+        $response = $this->get('api/companies');
+
+        // $response->dump(); for debug and more information
+
+        $response->assertStatus(200);
+
+    }
+}
+
+
+
+# frontend
+
+npm install vue@latest vue-router@4
+
+npm install --save-dev @vitejs/plugin-vue
+
+https://laravel.com/docs/11.x/vite#vue
+
+
+# frontend structure
+
+js
+    components
+        compaines
+            CompaniesIndex.vue
+            CompaniesCreate.vue
+            CompaniesEdit.vue
+    composables
+        companies.js   // mb is modern Composition API for vue
+    router
+        index.js 
+    app.js        
+
