@@ -76,14 +76,25 @@ https://laravel.com/docs/11.x/vite#vue
 # frontend structure
 
 js
+
     components
+
         compaines
+
             CompaniesIndex.vue
+
             CompaniesCreate.vue
+
             CompaniesEdit.vue
+
     composables
+
         companies.js   // mb is modern Composition API for vue
+
     router
+
         index.js 
+
     app.js        
 
+#
