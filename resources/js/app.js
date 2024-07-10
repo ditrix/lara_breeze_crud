@@ -1,5 +1,6 @@
 import './bootstrap';
 
+/* Alpine не нужен. в общ вещь бесполезная в данном прожекте. стили таблицы не более */
 import Alpine from 'alpinejs';
 
 window.Alpine = Alpine;
